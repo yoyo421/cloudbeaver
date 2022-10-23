@@ -25,6 +25,7 @@
         <module>sqlite</module>
         <module>sqlserver</module>
         <module>trino</module>
+        <module>vertica</module>
     </modules>
 
     <build>

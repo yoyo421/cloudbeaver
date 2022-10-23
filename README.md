@@ -1,3 +1,48 @@
+# Context
+
+This is a fork of [CloudBeaver](https://github.com/dbeaver/cloudbeaver) to have vertica include in its list of enabled dbs, because as default vertica is not included.
+
+This repo uses vertica version <11.0.2-0> and it can be change at:
+`./cloudbeaver/server/drivers/vertica/pom.xml`
+
+# How to build & run this _thing_
+
+CloudBeaver has 3 components, the UI, server and [DBeaver](https://github.com/dbeaver/dbeaver).
+
+This repo only includes the UI and server part, the build process will git clone [DBeaver](https://github.com/dbeaver/dbeaver).
+
+EST time for build: 15 minutes
+
+To create the docker image run this script from this directory:
+
+```sh
+docker build -t dbeaver/cloudbeaver:dev . --file ./deploy/docker/Dockerfile
+```
+
+This will create an image called `dbeaver/cloudbeaver:dev`
+
+# Run the CloudBeaver:
+
+## Option 1:
+
+we can run the script **next** to `make-docker-container.sh` called `run-docker-container.sh`
+
+```sh
+./run-docker-container.sh
+```
+
+## Option 2:
+
+CloudBeaver uses port `8978` to serve its web interface (Server) and this directory `/opt/cloudbeaver/workspace` to save its state data
+
+to run it locally you can run the next script:
+
+```sh
+docker run -it --rm -p 8978:8978 dbeaver/cloudbeaver:dev
+```
+
+# Original README
+
 # CloudBeaver Community
 
 <img src="https://github.com/dbeaver/cloudbeaver/wiki/images/cloudbeaver-logo.png" width="250"/>
@@ -5,7 +50,7 @@
 Cloud Database Manager - Community Edition.  
 CloudBeaver is a web server which provides rich web interface. Server itself is a Java application, web part is written on TypeScript and React.  
 It is free to use and open-source (licensed under [Apache 2](https://github.com/dbeaver/cloudbeaver/blob/devel/LICENSE) license).  
-See out [WIKI](https://github.com/dbeaver/cloudbeaver/wiki) for more details.  
+See out [WIKI](https://github.com/dbeaver/cloudbeaver/wiki) for more details.
 
 ![](https://github.com/dbeaver/cloudbeaver/wiki/images/demo_screenshot_1.png)
 
@@ -16,7 +61,7 @@ See out [WIKI](https://github.com/dbeaver/cloudbeaver/wiki) for more details.
 
 ## Demo server
 
-You can see live demo of CloudBeaver here: https://demo.cloudbeaver.io  
+You can see live demo of CloudBeaver here: https://demo.cloudbeaver.io
 
 [Database access instructions](https://github.com/dbeaver/cloudbeaver/wiki/Demo-Server)
 
@@ -57,6 +102,7 @@ You can see live demo of CloudBeaver here: https://demo.cloudbeaver.io
 ### CloudBeaver 22.3.0 - 2022-12-05
 
 Changes since 22.2.0
+
 - Users receive notifications about any changes in:
   - the server configuration,
   - connections and scripts they are currently working with.
@@ -94,8 +140,6 @@ Changes since 22.2.0
   - the size limit of displayed JSON values can be changed.
 - A lot of small bug fixes, enhancements and improvements have been made.
 
-
 ### Old CloudBeaver releases
 
 You can find information about earlier releases on the CloudBeaver wiki https://github.com/dbeaver/cloudbeaver/wiki/Releases.
-
