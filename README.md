@@ -2,24 +2,24 @@
 
 This is a fork of [CloudBeaver](https://github.com/dbeaver/cloudbeaver) to have vertica include in its list of enabled dbs, because as default vertica is not included.
 
-This repo uses vertica version <11.0.2-0> and it can be change at:
+This repo uses vertica version <12.0.2-0> and it can be change at:
 `./cloudbeaver/server/drivers/vertica/pom.xml`
 
 # How to build & run this _thing_
 
 CloudBeaver has 3 components, the UI, server and [DBeaver](https://github.com/dbeaver/dbeaver).
 
-This repo only includes the UI and server part, the build process will git clone [DBeaver](https://github.com/dbeaver/dbeaver).
+This repo only includes the UI and server part, the buServer configurationild process will git clone [DBeaver](https://github.com/dbeaver/dbeaver).
 
 EST time for build: 15 minutes
 
-To create the docker image run this script from this directory:
+To create the docker image run this script from the current directory:
 
 ```sh
-docker build -t dbeaver/cloudbeaver:dev . --file ./deploy/docker/Dockerfile
+docker build -t dbeaver/cloudbeaver:vertica_12.0.2-0 . --file ./deploy/docker/Dockerfile
 ```
 
-This will create an image called `dbeaver/cloudbeaver:dev`
+This will create an image called `dbeaver/cloudbeaver:vertica_12.0.2-0`
 
 # Run the CloudBeaver:
 
