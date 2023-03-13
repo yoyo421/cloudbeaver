@@ -1,5 +1,5 @@
 # FROM eclipse-temurin:17.0.4.1_1-jre-focal
-FROM eclipse-temurin:17-jdk AS builder
+FROM eclipse-temurin:17.0.6_10-jre-jammy AS builder
 
 # adding node & yarn latest version repos
 RUN apt-get update 
@@ -28,11 +28,12 @@ RUN git clone --depth 1 https://github.com/dbeaver/dbeaver.git /dbeaver
 # COPY dbeaver /dbeaver
 RUN cd /cloudbeaver/deploy && ./build.sh
 
-FROM eclipse-temurin:17.0.4.1_1-jre-focal
+FROM eclipse-temurin:17.0.6_10-jre-jammy
 
 COPY --from=builder cloudbeaver/deploy/cloudbeaver /opt/cloudbeaver
 
 EXPOSE 8978
+USER nobody
 
 WORKDIR /opt/cloudbeaver/
 ENTRYPOINT ["./run-server.sh"]

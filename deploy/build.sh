@@ -20,7 +20,10 @@ echo "Pull cloudbeaver platform"
 cd ../..
 
 echo "Pull dbeaver platform"
-[ ! -d dbeaver ] && git clone https://github.com/dbeaver/dbeaver.git
+if [ ! -d dbeaver ]; then
+  git clone --depth 1 https://github.com/dbeaver/dbeaver.git
+  echo "Downloading dbeaver platform"
+fi
 
 cd cloudbeaver/deploy
 

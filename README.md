@@ -38,7 +38,7 @@ CloudBeaver uses port `8978` to serve its web interface (Server) and this direct
 to run it locally you can run the next script:
 
 ```sh
-docker run -it --rm -p 8978:8978 dbeaver/cloudbeaver:dev
+docker run -it --rm -p 8978:8978 dbeaver/cloudbeaver:vertica_12.0.2-0
 ```
 
 # Original README
